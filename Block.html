@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block Page - Games</title>
+
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ---------------------- GLASS NAVBAR ---------------------- */
+    nav.glass-nav {
+      background: rgba(20, 20, 20, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeDown 1s ease forwards;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Nav Hover */
+    .navbar-nav .nav-link:hover {
+      color: #ff3366 !important;
+      transition: 0.3s;
+    }
+
+    /* Profile Icon Glow */
+    .profile-pic {
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .profile-pic:hover {
+      color: #ff2e63;
+      filter: drop-shadow(0 0 8px #ff2e63);
+      transform: scale(1.1);
+    }
+
+    /* ---------------------- HERO ---------------------- */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1605902711622-cfb43c44367e') center/cover no-repeat;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px #000;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    /* ---------------------- CARDS ---------------------- */
+    .container {
+      width: 90%;
+      margin: auto;
+      margin-top: 30px;
+      animation: fadeUp 1s ease;
+    }
+
+    .controls input, .controls select {
+      padding: 10px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: white;
+      border-radius: 5px;
+      width: 32%;
+    }
+
+    .card {
+      background: #1b1b1b;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+      cursor: pointer;
+      border: 1px solid #333;
+      margin-bottom: 25px;      /* CARD ↓ BELOW EACH OTHER */
+      width: 100%;     
+      height: 675px;         
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px #ff2e63;
+    }
+
+    /* FIX 1 — Image size fix */
+    .card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    /* FIX 2 — Text Color */
+    .card h3,
+    .card p,
+    .card span {
+      color: #fff !important;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    /* Play Now Button */
+    .play-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      background: #ff2e63;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .play-btn:hover {
+      background: #ff4f7a;
+    }
+
+    /* Modal */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal {
+      background: #1a1a1a;
+      width: 90%;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #000;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ---------------------- RESPONSIVE FIX ---------------------- */
+    @media (max-width: 768px) {
+      .controls input, .controls select {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .hero h1 { font-size: 2.2rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- GLASS NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark glass-nav">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold fs-3" href="#">Dodge Or Die</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="Block.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Games</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="moreDOD.html">Dodge or Die</a></li>
+              <li><a class="dropdown-item" href="morevait.html">Vite Run</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav align-items-center gap-3">
+          <li class="nav-item">
+            <a class="btn btn-danger px-3" href="login.html">Login</a>
+          </li>
+
+          <li>
+            <a href="profile.html">
+              <svg class="profile-pic" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Adventure Games</h1>
+    <p>Explore the best adventure games with HD graphics!</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <div class="controls d-flex justify-content-between flex-wrap">
+      <input type="text" placeholder="Search games..." id="search" onkeyup="filterGames()">
+      <select id="sort" onchange="sortGames()">
+        <option value="latest">Latest</option>
+        <option value="popular">Most Popular</option>
+        <option value="rating">Top Rated</option>
+      </select>
+      <select>
+        <option>All Modes</option>
+        <option>Single Player</option>
+        <option>Multiplayer</option>
+      </select>
+    </div>
+
+    <!-- Game Cards -->
+    <div id="gameGrid">
+
+      <div class="card" onclick="openModal('Dodge or Die')">
+        <img src="../shooting.webp" />
+        <div class="card-content">
+          <h3>Dodge or Die</h3>
+          <p>Survive in your field and save yourself from Enemies.</p>
+             <button class="btn btn-custom" onclick="window.location.href='game/index.html';">
+  Play Now
+</button>
+
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('Nait Run')">
+        <img src="../Vite.png" />
+        <div class="card-content">
+          <h3>Vite Run</h3>
+          <p>Vite Run is a fun survival Rabbit adventure.</p>
+          <button class="btn btn-custom" onclick="window.location.href='Game%202/2DGameJS/index.html';">
+    Play Now
+    </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p>Full game details will be shown here.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="pt-4 pb-5 mt-5 text-center text-muted small">
+    
+  </footer>
+
+  <script>
+    function openModal(name) {
+      document.getElementById('modalTitle').innerText = name;
+      document.getElementById('modalBg').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('modalBg').style.display = 'none';
+    }
+  </script>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

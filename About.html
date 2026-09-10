@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* FIXED — only one body tag */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+nav.glass-nav {
+      background: rgba(20, 20, 20, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeDown 1s ease forwards;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Nav Hover */
+    .navbar-nav .nav-link:hover {
+      color: #ff3366 !important;
+      transition: 0.3s;
+    }
+
+    /* Profile Icon Glow */
+    .profile-pic {
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .profile-pic:hover {
+      color: #ff2e63;
+      filter: drop-shadow(0 0 8px #ff2e63);
+      transform: scale(1.1);
+    }
+
+
+    .section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 120px 40px;
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .left-text {
+      width: 40%;
+      font-size: 48px;
+      font-weight: bold;
+      transform: translateX(-100px);
+      opacity: 0;
+      transition: all 1s ease;
+      color: #ff4747;
+    }
+
+    .section.show .left-text {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .right-text {
+      width: 55%;
+      font-size: 18px;
+      line-height: 1.7;
+      transform: translateX(100px);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .section.show .right-text {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      color: #ff0033;
+      font-size: 42px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #ff1a4d;
+      font-size: 28px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      color: #ff0033;
+      margin-bottom: 5px;
+    }
+
+    p {
+      line-height: 1.7;
+      font-size: 17px;
+      color: #dcdcdc;
+    }
+
+    .section-box {
+      background: #111;
+      border-left: 4px solid #ff0033;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 6px;
+      box-shadow: 0px 0px 10px #000;
+    }
+
+    ul {
+      margin-left: 20px;
+      line-height: 1.7;
+    }
+
+    .highlight {
+      color: #ff0033;
+      font-weight: bold;
+    }
+
+    /* Proper space for profile icon */
+    .profile-pic {
+      margin-left: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- GLASS NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark glass-nav">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold fs-3" href="#">Dodge Or Die</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="Block.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Games</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="moreDOD.html">Dodge or Die</a></li>
+              <li><a class="dropdown-item" href="morevait.html">Vite Run</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav align-items-center gap-3">
+          <li class="nav-item">
+            <a class="btn btn-danger px-3" href="login.html">Login</a>
+          </li>
+
+          <li>
+            <a href="profile.html">
+              <svg class="profile-pic" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT CONTENT -->
+  <div class="about-container">
+
+    <h1>About Our Games</h1>
+    <p>
+      Welcome to our official gaming website — a space built for creativity, game development, and unique 2D gaming experiences.
+      Our platform focuses on well-designed, clean, and fast games.
+    </p>
+
+    <div class="section-box">
+      <h2>🎮 Our Games</h2>
+
+      <br>
+      <br>
+
+
+      <!-- Game 2 -->
+      <h3>1. Dodge or Die</h3>
+      <p>
+        Dodge or Die is a 2D shooter where you must survive waves of zombies using your gun.
+      </p>
+      <p>The gameplay includes:</p>
+      <ul>
+        <li>enemies from all directions</li>
+        <li>Shooting mechanics</li>
+        <li>Score-based survival</li>
+      </ul><br>
+      <br>
+
+      <!-- Game 1 -->
+      <h3>2. Vite Run</h3>
+      <p>
+        Viat Run is a 2D survival adventure game featuring a cute dog character.
+        Your mission is simple: <b>run and survive</b>.
+      </p>
+      <p>In this world, the dog must avoid:</p>
+      <ul>
+        <li>Different types of deadly plants</li>
+        <li>Dangerous spiders</li>
+        <li>Fast-moving bees</li>
+      </ul>
+      <p>
+        Touching any obstacle reduces your lifeline.  
+        Fast-paced, smooth, and clean!
+      </p>
+    </div>
+
+    <div class="section-box">
+      <h2>🚀 Future Development</h2>
+      <ul>
+        <li>New 2D & 3D games</li>
+
+        <li>Profile customization</li>
+        <li>Leaderboards</li>
+        <li>Skins & animations</li>
+        <li>Multiplayer (future)</li>
+      </ul>
+    </div>
+
+    <div class="section-box">
+      <h2>🎯 Our Mission</h2>
+      <p>
+        We aim to deliver fast, fun, futuristic 2D games in a premium dark-red design.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="pt-4 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Dodge Or Die</h5>
+          <div class="small text-muted"></div>
+        </div>
+
+        <div class="col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-muted">Games</a></li>
+            <li><a href="#" class="text-muted">About</a></li>
+            <li><a href="#contact" class="text-muted">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 text-md-end">
+          <h6>Follow</h6>
+          <div class="small text-muted">Twitter • Instagram • GitHub</div>
+        </div>
+      </div>
+
+      <hr style="border-color:rgba(255,255,255,0.03)">
+
+      <div class="d-flex justify-content-between small text-muted">
+        <div>© 2025 KIETian</div>
+        <div></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+
+

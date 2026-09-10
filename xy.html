@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Showcase</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ---------- ROOT COLORS ---------- */
+:root{
+  --bg-dark: #0d0d0d;
+  --glass-dark: rgba(15,15,15,0.45);
+  --card-dark: #1a1a1a;
+
+  --pixel-red: #ff4040;
+  --pixel-yellow: #ffd60a;
+  --soft-white: #f5f5f5;
+}
+
+/* ---------- BODY ---------- */
+body {
+  background: var(--bg-dark);
+  color: var(--soft-white);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ---------- NAVBAR ---------- */
+nav.glass-nav {
+  background: var(--glass-dark);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,214,10,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar-nav .nav-link {
+  color: var(--soft-white);
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--pixel-yellow) !important;
+}
+
+/* ---------- PROFILE ICON ---------- */
+.profile-pic {
+  transition: 0.4s;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+
+.profile-pic:hover {
+  filter: drop-shadow(0 0 10px var(--pixel-red));
+  transform: scale(1.1);
+}
+
+/* ---------- SECTIONS ---------- */
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 40px;
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section.hide {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* ---------- LEFT / RIGHT TEXT ---------- */
+.left-text {
+  width: 40%;
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--pixel-red);
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.section.show .left-text {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.right-text {
+  width: 55%;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--soft-white);
+  transform: translateX(100px);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.section.show .right-text {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.right-text button{
+  display: block;
+  margin-top: 10px;
+}
+
+/* ---------- GAME CARD ---------- */
+.game-card {
+  background: var(--card-dark);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 50px;
+  border: 1px solid rgba(255,214,10,0.25);
+  box-shadow: 0 0 20px rgba(255,64,64,0.25);
+}
+
+.game-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ---------- BUTTON ---------- */
+.btn-custom {
+  background: transparent;
+  color: var(--pixel-yellow);
+  border: 2px solid var(--pixel-yellow);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(255,214,10,0.5);
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background: var(--pixel-yellow);
+  color: #000;
+  box-shadow: 0 0 22px rgba(255,214,10,0.9);
+}
+
+/* ---------- LINKS ---------- */
+a {
+  color: var(--soft-white);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--pixel-red);
+}
+
+/* ---------- HERO SECTION ---------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  background: url("C:\\W3_website/shooting.webp") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: var(--soft-white);
+}
+
+.hero-text h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: var(--pixel-red);
+  text-shadow: 0 0 18px rgba(255,64,64,0.9);
+  text-align: center;
+}
+
+.hero-text p {
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* ---------- GAME BANNER ---------- */
+.game-banner {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  background: url("C:\\W3_website/mario.jpeg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.game-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--soft-white);
+  width: 100%;
+}
+
+.banner-content h1 {
+  font-size: 60px;
+  font-weight: 700;
+  color: var(--pixel-yellow);
+  text-shadow: 0 0 18px rgba(255,214,10,0.9);
+}
+
+.banner-content h5,
+.banner-content p {
+  text-align: left;
+  color: var(--soft-white);
+}
+
+.banner-content p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+</style>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark glass-nav">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold fs-3" href="#">VEGO</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="Block.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Games</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Dodge or Die</a></li>
+              <li><a class="dropdown-item">Vite Run</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav align-items-center gap-3">
+          <li class="nav-item">
+            <a class="btn btn-danger px-3" href="login.html">Login</a>
+          </li>
+
+          <li>
+            <a href="profile.html">
+              <svg class="profile-pic" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+<div class="hero">
+  <div class="hero-text">
+<div class="section" id="scrollspyHeading1">
+  <h1 class="left-text">Dodge or Die</h1>
+  <div class="right-text">  
+   <p>Dodge or Die is a fast-paced 2D shooting game designed to challenge your reflexes, accuracy, and survival skills. Enemies appear from every direction, each with different attack patterns and abilities, forcing you to think quickly and stay alert.<br>
+You can move freely across the map and choose from a variety of weapons such as pistols, rapid-fire guns, explosive shots, and powerful upgrades. Power-ups like shields, extra damage, and health boosts help you survive longer during intense battles.<br><br>
+The game offers smooth controls and dynamic sound effects—every shot fired and every enemy defeated feels immersive and satisfying. </p><br>
+    <button type="button" class="btn btn-dark"><a href="moreDOD.html">More</a></button>
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="game-card">
+    <div class="row">
+
+      <div class="col-md-6">
+        <img src="../shooting.webp" class="game-img" alt="Shooting Game">
+      </div>
+
+      <div class="col-md-6">
+        <h2>Dodge Or Die</h2>
+        <p>
+          A fast shooting survival game where enemies attack in waves and you must survive as long as possible.
+        </p>
+           <h4></h4>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+       <button class="btn btn-custom" onclick="window.location.href='game/index.html';">
+  Play Now
+</button>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<section class="game-banner">
+  <div class="banner-content">
+<div class="section" id="scrollspyHeading2">
+  <h1 class="left-text">Vite Run</h1>
+  <div class="right-text">
+    <h5>Introduction</h5>
+    <p class="mid-text">
+      Vait is an exciting and fast-paced 2D platformer that takes you on a colorful adventure filled with action and challenges. Run, jump, and dodge your way through beautifully designed levels, each packed with obstacles, moving platforms, hidden areas, and small enemies waiting to test your skills. As you explore each stage, you can collect coins, special rewards, and power-ups that help you progress further and achieve higher scores.
+The game features smooth and responsive controls, clean animations, and vibrant visuals that make the experience fun for players of all ages. Whether you’re aiming to complete levels quickly or trying to collect every last coin, Vait delivers a simple yet engaging gameplay experience that keeps you coming back for more.
+Your mission is simple — survive every challenge, explore each level fully, and reach the finish line with maximum rewards!
+</p>
+    
+     <button type="button" class="btn btn-dark"><a href="morevait.html">More</a></button>
+  </div>
+</div>
+  </div>
+</section>
+
+<div class="container mt-4">
+  <div class="game-card">
+    <div class="row">
+
+      <div class="col-md-6 order-md-2">
+        <img src="../Vite.png" height="325" class="game-img" alt="Mario Game">
+      </div>
+
+      <div class="col-md-6 order-md-1">
+        <h2>Vite Run</h2>
+        <p>
+          A platform adventure game where you run through obstacles, defeat enemies, and collect coins.
+        </p>
+
+        <h4></h4>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+    <button class="btn btn-custom" onclick="window.location.href='Game%202/2DGameJS/index.html';">
+    Play Now
+    </button>
+
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+<script>
+  const sections = document.querySelectorAll('.section');
+
+  const animateSections = () => {
+    sections.forEach(sec => {
+      let top = sec.getBoundingClientRect().top;
+      let bottom = sec.getBoundingClientRect().bottom;
+
+      // Visible area ke andar ho to show karo
+      if (top < window.innerHeight - 150 && bottom > 150) {
+        sec.classList.add('show');
+        sec.classList.remove('hide');
+      } 
+      // Scroll upar ya neeche jaate hi hide animation
+      else {
+        sec.classList.add('hide');
+        sec.classList.remove('show');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', animateSections);
+  animateSections();
+
+
+</script>
+
+<footer class="pt-4 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Dodge Or Die</h5>
+          <div class="small text-muted"></div>
+        </div>
+        <div class="col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-muted">Games</a></li>
+            <li><a href="#" class="text-muted">About</a></li>
+            <li><a href="#contact" class="text-muted">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 text-md-end">
+          <h6>Follow</h6>
+          <div class="small text-muted">Twitter • Instagram • GitHub</div>
+        </div>
+      </div>
+      <hr style="border-color:rgba(255,255,255,0.03)">
+      <div class="d-flex justify-content-between small text-muted">
+        <div>© 2025 KIETian</div>
+        <div>Made with Dodge Or Die</div>
+      </div>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

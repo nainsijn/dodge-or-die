@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile + Two Game Details</title>
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    body {
+        background: #0d0d0d;
+        color: #fff;
+    }
+   
+    .container {
+        max-width: 650px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 18px;
+        color: #ff0000;
+        font-size: 28px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        outline: none;
+        background: #1a1a1a;
+        color: #fff;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    input[type="file"] {
+        background: #1f1f1f;
+        padding: 12px;
+        cursor: pointer;
+        color: #bbb;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        background: #aa0202;
+        color: #000;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #ff0000;
+    }
+
+    #profilePage { display: none; }
+
+    .profile-header {
+        width: 100%;
+        background: linear-gradient(#aa0202,#ff0000);
+        text-align: center;
+        padding: 35px 0;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 4px solid white;
+        object-fit: cover;
+    }
+
+    .details p {
+        background: #1b1b1b;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        margin-top: 28px;
+        color: #ff0000;
+        text-align: left;
+        margin-bottom: 12px;
+    }
+
+    .game-card {
+        background: #111;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+
+    .game-icon {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 4px solid #ff0000;
+        object-fit: cover;
+        margin-bottom: 12px;
+    }
+
+    .play-btn {
+        width: 100%;
+        padding: 15px;
+        background: #ff0000;
+        color: #000;
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 12px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+        a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff4747; 
+}
+</style>
+</head>
+<body>
+
+<!-- USER FORM -->
+<div class="container" id="formPage">
+    <h2>Create Your Profile</h2>
+
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="date" id="dob">
+
+    <select id="gender">
+        <option value="" disabled selected>Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
+
+    <label style="color:#ff0000;">Upload Profile Picture</label>
+    <input type="file" id="profilePic" accept="image/*">
+
+    <button onclick="saveProfile()">Submit</button>
+</div>
+
+<!-- PROFILE PAGE -->
+<div id="profilePage">
+    <div class="profile-header">
+        <img id="displayPic" class="profile-pic">
+        <h2 id="displayName"></h2>
+        <p id="displayEmail" style="opacity: 0.7;"></p>
+    </div>
+
+    <div class="container">
+
+        <div class="details">
+            <p><strong>Birth Date:</strong> <span id="displayDob"></span></p>
+            <p><strong>Gender:</strong> <span id="displayGender"></span></p>
+        </div>
+
+        <!-- GAME 1 -->
+        <h3 class="section-title">Game 1: Vite Run</h3>
+
+        <div class="game-card">
+            <center>
+                <img id="displayGameIcon1" class="game-icon">
+            </center>
+
+            <p><strong>Game Name:</strong> ViteRun</p>
+            <p><strong>Category:</strong> 2D Adventure Platformer</p>
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>Game Size:</strong> 48 MB</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.5)</p>
+            <p><strong>Developer:</strong> </p>
+            <p><strong>Release Year:</strong> 2025</p>
+            <p><strong>Description:</strong><br>
+                Vait Run is an exciting 2D adventure game where you jump, dodge enemies, and collect rewards while completing fun levels.
+            </p>
+
+            <button class="play-btn">PLAY NOW</button>
+        </div>
+
+        <!-- GAME 2 -->
+        <h3 class="section-title">Game 2: Shadow Escape</h3>
+
+        <div class="game-card">
+            <center>
+                <img id="displayGameIcon2" class="game-icon">
+            </center>
+
+            <p><strong>Game Name:</strong> Shadow Escape</p>
+            <p><strong>Category:</strong> Action Adventure</p>
+            <p><strong>Version:</strong> 2.1</p>
+            <p><strong>Game Size:</strong> 52 MB</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.8)</p>
+            <p><strong>Developer:</strong>  top Studios</p>
+            <p><strong>Release Year:</strong> 2025</p>
+            <p><strong>Description:</strong><br>
+                Shadow Escape is a fast-paced action game where you dash through dark levels, avoid traps, and survive intense challenges.
+            </p>
+
+            <button class="play-btn">PLAY NOW</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function saveProfile() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let dob = document.getElementById("dob").value;
+    let gender = document.getElementById("gender").value;
+
+    let picFile = document.getElementById("profilePic").files[0];
+
+    if (!name || !email || !dob || !gender) {
+        alert("Please fill all details.");
+        return;
+    }
+
+    document.getElementById("displayName").innerText = name;
+    document.getElementById("displayEmail").innerText = email;
+    document.getElementById("displayDob").innerText = dob;
+    document.getElementById("displayGender").innerText = gender;
+
+    if (picFile) {
+        let r1 = new FileReader();
+        r1.onload = e => document.getElementById("displayPic").src = e.target.result;
+        r1.readAsDataURL(picFile);
+    }
+
+    document.getElementById("formPage").style.display = "none";
+    document.getElementById("profilePage").style.display = "block";
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Showcase</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+nav.glass-nav {
+      background: rgba(20, 20, 20, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeDown 1s ease forwards;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Nav Hover */
+    .navbar-nav .nav-link:hover {
+      color: #ff3366 !important;
+      transition: 0.3s;
+    }
+
+    /* Profile Icon Glow */
+    .profile-pic {
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .profile-pic:hover {
+      color: #ff2e63;
+      filter: drop-shadow(0 0 8px #ff2e63);
+      transform: scale(1.1);
+    }
+
+
+    /* Cards for Game Section */
+    .game-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 50px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+
+    .game-img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .btn-custom {
+      background: #ff4747;
+      color: #fff;
+      border-radius: 6px;
+    }
+
+    .btn-custom:hover {
+      background: #ff2e2e;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #ff4747;
+    }
+  </style>
+</head>
+
+<body>
+
+ 
+  <!-- GLASS NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark glass-nav">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold fs-3" href="#">Dodge Or Die</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="Block.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Games</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="moreDOD.html">Dodge or Die</a></li>
+              <li><a class="dropdown-item" href="morevait.html">Vite Run</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav align-items-center gap-3">
+          <li class="nav-item">
+            <a class="btn btn-danger px-3" href="login.html">Login</a>
+          </li>
+
+          <li>
+            <a href="profile.html">
+              <svg class="profile-pic" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- GAME SECTION -->
+<div class="container mt-5">
+
+  <!-- CARD 1 - LEFT IMAGE -->
+  <div class="game-card">
+    <div class="row">
+      <div class="col-md-6">
+        <video autoplay loop muted playsinline style="width:100%; border-radius:10px;">
+          <source src="C:\Users\admin\OneDrive\Pictures/Dodge or die.mp4" type="video/mp4">
+        </video>
+      </div>
+ <!-- VITE -->
+      <div class="col-md-6">
+      <h4>How to Play : Dodge Or Die</h4>
+        <ul>
+          <li><b>A</b> To Go Left</li>
+          <li><b>D</b> To GO Right</li>
+          <li><b>W</b> To Go UP</li>
+          <li><b>S</b> To Go down</li>
+        </ul>
+       <button class="btn btn-custom" onclick="window.location.href='game/index.html';">
+  Play Now
+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2 - RIGHT IMAGE -->
+   <!-- DOD -->
+  <div class="game-card">
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <video autoplay loop muted playsinline style="width:100%; border-radius:10px;">
+          <source src="C:\Users\admin\OneDrive\Pictures/Dodge or die2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="col-md-6 order-md-1">
+        <h4>How To Play : Vite Run</h4>
+        <ul>
+          <li><b><</b> To Go Left</li>
+          <li><b>></b> To GO Right</li>
+          <li><b>^</b> To Go UP</li>
+       
+          
+        </ul>
+       <p>You must avoid these bees. If they touch you, your life line will decrease.</p>
+         <button class="btn btn-custom" onclick="window.location.href='Game%202/2DGameJS/index.html';">
+    Play Now
+    </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 - LEFT IMAGE -->
+  <div class="game-card">
+    <div class="row">
+      <div class="col-md-6">
+        <video autoplay loop muted playsinline style="width:100%; border-radius:10px;">
+          <source src="video3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Game 3</h2>
+        <p>Game 3 description here...</p>
+        <button class="btn btn-custom">Play Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4 - RIGHT IMAGE -->
+  <div class="game-card">
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <video autoplay loop muted playsinline style="width:100%; border-radius:10px;">
+          <source src="video4.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="col-md-6 order-md-1">
+        <h2>Game 4</h2>
+        <p>Game 4 description here...</p>
+        <button class="btn btn-custom">Play Now</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="pt-4 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Dodge Or Die</h5>
+          <div class="small text-muted"></div>
+        </div>
+        <div class="col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-muted">Games</a></li>
+            <li><a href="#" class="text-muted">About</a></li>
+            <li><a href="#contact" class="text-muted">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 text-md-end">
+          <h6>Follow</h6>
+          <div class="small text-muted">Twitter • Instagram • GitHub</div>
+        </div>
+      </div>
+      <hr style="border-color:rgba(255,255,255,0.03)">
+      <div class="d-flex justify-content-between small text-muted">
+        <div>© 2025 KIETian</div>
+        <div></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+      
